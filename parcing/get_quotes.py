@@ -23,10 +23,10 @@ data = {
 
 result = work.post(url + "login", headers=headers, data=data, allow_redirects=True)
 
-count = 1
+page = 1
 
 while True:
-    start_url = f"{url}page/{count}/"
+    start_url = f"{url}page/{page}/"
 
     response = work.get(start_url, headers=headers)
     soup = BeautifulSoup(response.text, 'lxml')
@@ -49,4 +49,4 @@ while True:
     next_button = soup.find("li", class_="next")
     if not next_button:
         break
-    count += 1
+    page += 1
