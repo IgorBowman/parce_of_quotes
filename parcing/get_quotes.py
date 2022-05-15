@@ -33,7 +33,7 @@ while True:
     article = soup.find_all("div", class_="quote")
 
     for item in article:
-        with open("get_all_quotes.txt", 'a', encoding="utf-8") as f:
+        with open("get_all_quotes.txt", 'a', encoding="utf-8") as file:
             text = item.find("span", class_="text").text
             author = item.find("small", class_="author").text
             for_tags = item.find_all("a", class_="tag")
@@ -41,10 +41,10 @@ while True:
 
             for i in for_tags:
                 tags.append(i.text)
-            f.write(f"Text: {text}" + "\n")
-            f.write(f"Author: {author}" + "\n")
-            f.write(f"Tags: {tags}")
-            f.write("\n\n")
+            file.write(f"Text: {text}" + "\n")
+            file.write(f"Author: {author}" + "\n")
+            file.write(f"Tags: {tags}")
+            file.write("\n\n")
 
     next_button = soup.find("li", class_="next")
     if not next_button:
